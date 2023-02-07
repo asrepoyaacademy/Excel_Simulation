@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td
+        {
+            border: 1pxs solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        var HTML_Table = '';
+        HTML_Table += '<table>';
+        HTML_Table += '<thead>';
+        HTML_Table += '</thead>';
+
+        HTML_Table += '<tbody>';
+            
+        
+        HTML_Table += '<tr>';
+        
+        HTML_Table += '<td></td>';
+        for (let Y = 1; Y <= 10; Y++) {
+            HTML_Table += '<td>';
+            HTML_Table += Y;  
+
+
+            HTML_Table += '</td>';
+
+        }
+        HTML_Table += '</tr>';
+            
+        for (let index = 1; index <= 50; index++) {
+
+
+            
+
+
+            HTML_Table += '<tr>';
+
+            HTML_Table += '<td>';
+            HTML_Table += index;
+            HTML_Table += '</td>';
+
+            for (let Y = 1; Y <= 10; Y++) {
+                HTML_Table += '<td>';
+                HTML_Table += '<input type="text" id="'+index+Y+'" onkeypress="check_request(this.id)" placeholder="'+index+Y+'" />';  
+
+
+                HTML_Table += '</td>';
+                
+            }
+
+            HTML_Table += '</tr>';
+            
+        }
+
+
+        HTML_Table += '</tbody>';
+        HTML_Table += '</table>';
+
+        document.write(HTML_Table);
+
+        function check_request(input_id)
+        {
+            if(event.key == "Enter")
+            {
+                var input_value  = document.getElementById(input_id).value;
+                var input_to_arr = input_value.split(' ');
+
+                var result;
+                switch (input_to_arr[1]) {
+                    
+                    case '+':
+                        result = parseFloat(document.getElementById(input_to_arr[0]).value) + parseFloat(document.getElementById(input_to_arr[2]).value);
+                        break;
+                    case '-':
+                        result = parseFloat(document.getElementById(input_to_arr[0]).value) - parseFloat(document.getElementById(input_to_arr[2]).value);
+                        break;
+                
+                    case '/':
+                        result = parseFloat(document.getElementById(input_to_arr[0]).value) / parseFloat(document.getElementById(input_to_arr[2]).value);
+                        break;
+                    case '*':
+                        result = parseFloat(document.getElementById(input_to_arr[0]).value) * parseFloat(document.getElementById(input_to_arr[2]).value);
+                        break;
+                    case '**':
+                        result = parseFloat(document.getElementById(input_to_arr[0]).value) ** parseFloat(document.getElementById(input_to_arr[2]).value);
+                        break;
+                    default:
+                        break;
+                }
+
+                document.getElementById(input_id).value = result;
+
+            }
+        }
+
+    </script>
+</body>
+</html>
